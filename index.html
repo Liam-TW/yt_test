@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Youtube Influencers Trending Model</title>
+  <meta name="description" content="Youtube Influencers Trending Model" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Youtube Influencers Trending Model" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="Liam-TW/your-repo-name" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Youtube Influencers Trending Model" />
+  
+  
+  
+
+<meta name="author" content="Liam Chen" />
+
+
+<meta name="date" content="2024-11-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="text-mining-of-youtube-comments.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About this project</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#研究背景與目的"><i class="fa fa-check"></i><b>1.1</b> 研究背景與目的</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#研究方法"><i class="fa fa-check"></i><b>1.2</b> 研究方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#資料收集"><i class="fa fa-check"></i><b>1.2.1</b> 資料收集</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#變項選擇"><i class="fa fa-check"></i><b>1.2.2</b> 變項選擇</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#數據分析"><i class="fa fa-check"></i><b>1.2.3</b> 數據分析</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#個案分析"><i class="fa fa-check"></i><b>1.2.4</b> 個案分析</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#研究結果與討論"><i class="fa fa-check"></i><b>1.3</b> 研究結果與討論</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#與網紅合作的影片類型"><i class="fa fa-check"></i><b>1.3.1</b> 與網紅合作的影片類型</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#內部團隊製作的影片類型"><i class="fa fa-check"></i><b>1.3.2</b> 內部團隊製作的影片類型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#結論與實務建議"><i class="fa fa-check"></i><b>1.4</b> 結論與實務建議</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#參考文獻"><i class="fa fa-check"></i><b>1.5</b> 參考文獻</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html"><i class="fa fa-check"></i><b>2</b> Text Mining of Youtube Comments</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#準備-r-python-環境"><i class="fa fa-check"></i><b>2.1</b> 準備 R + Python 環境</a></li>
+<li class="chapter" data-level="2.2" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#建置-dataset"><i class="fa fa-check"></i><b>2.2</b> 建置 Dataset</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#by-api-尋找影片標籤"><i class="fa fa-check"></i><b>2.2.1</b> By API 尋找影片標籤</a></li>
+<li class="chapter" data-level="2.2.2" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#by-api-查找符合條件的-url-清單"><i class="fa fa-check"></i><b>2.2.2</b> By API 查找符合條件的 url 清單</a></li>
+<li class="chapter" data-level="2.2.3" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#爬取留言"><i class="fa fa-check"></i><b>2.2.3</b> 爬取留言</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#文字探勘分析"><i class="fa fa-check"></i><b>2.3</b> 文字探勘分析</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#套件準備"><i class="fa fa-check"></i><b>2.3.1</b> 套件準備</a></li>
+<li class="chapter" data-level="2.3.2" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#文本清理"><i class="fa fa-check"></i><b>2.3.2</b> 文本清理</a></li>
+<li class="chapter" data-level="2.3.3" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#case-1-詞頻文字雲"><i class="fa fa-check"></i><b>2.3.3</b> Case 1 詞頻&amp;文字雲</a></li>
+<li class="chapter" data-level="2.3.4" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#case-2-情感分析"><i class="fa fa-check"></i><b>2.3.4</b> Case 2 情感分析</a></li>
+<li class="chapter" data-level="2.3.5" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#case-3-主題模型"><i class="fa fa-check"></i><b>2.3.5</b> Case 3 主題模型</a></li>
+<li class="chapter" data-level="2.3.6" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#case-4-詞性標注"><i class="fa fa-check"></i><b>2.3.6</b> Case 4 詞性標注</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="next-step.html"><a href="next-step.html"><i class="fa fa-check"></i><b>3</b> Next Step?</a></li>
+<li class="chapter" data-level="4" data-path="重點回顧.html"><a href="重點回顧.html"><i class="fa fa-check"></i><b>4</b> 11/22 重點回顧</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="重點回顧.html"><a href="重點回顧.html#step.1-刪除非英文評論"><i class="fa fa-check"></i><b>4.1</b> Step.1 刪除非英文評論</a></li>
+<li class="chapter" data-level="4.2" data-path="重點回顧.html"><a href="重點回顧.html#step.2-文本再清理"><i class="fa fa-check"></i><b>4.2</b> Step.2 文本再清理</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="重點回顧.html"><a href="重點回顧.html#case-1-詞頻文字雲-1"><i class="fa fa-check"></i><b>4.2.1</b> Case 1 詞頻&amp;文字雲</a></li>
+<li class="chapter" data-level="4.2.2" data-path="重點回顧.html"><a href="重點回顧.html#case-2-情感分析-1"><i class="fa fa-check"></i><b>4.2.2</b> Case 2 情感分析</a></li>
+<li class="chapter" data-level="4.2.3" data-path="重點回顧.html"><a href="重點回顧.html#case-3-主題模型-1"><i class="fa fa-check"></i><b>4.2.3</b> Case 3 主題模型</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="重點回顧.html"><a href="重點回顧.html#step.3-變數修正時間按讚數"><i class="fa fa-check"></i><b>4.3</b> Step.3 變數修正（時間&amp;按讚數）</a></li>
+<li class="chapter" data-level="4.4" data-path="重點回顧.html"><a href="重點回顧.html#what-now..最新資料視圖"><i class="fa fa-check"></i><b>4.4</b> What now..最新資料視圖</a></li>
+<li class="chapter" data-level="4.5" data-path="重點回顧.html"><a href="重點回顧.html#轉換寬格式的必要"><i class="fa fa-check"></i><b>4.5</b> 轉換寬格式的必要？</a></li>
+<li class="chapter" data-level="4.6" data-path="重點回顧.html"><a href="重點回顧.html#step.4-ml-model-selection"><i class="fa fa-check"></i><b>4.6</b> Step.4 ML model selection</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Youtube Influencers Trending Model</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Youtube Influencers Trending Model</h1>
+<p class="author"><em>Liam Chen</em></p>
+<p class="date"><em>2024-11-22</em></p>
+</div>
+<div id="about-this-project" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> About this project<a href="index.html#about-this-project" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="研究背景與目的" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> 研究背景與目的<a href="index.html#研究背景與目的" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>隨著社群媒體的普及，YouTube 已成為全球最大的影片分享平台之一，其不僅為個人創作者提供了展示才華的機會，也為企業提供了宣傳產品、服務及品牌形象的廣大舞台。透過影片的快速傳播與內容的多樣性，YouTube 上的「爆紅影片」現象不斷出現，這類影片往往能夠在短時間內獲得大量的點擊率與觀眾關注，為創作者或相關品牌帶來巨大的曝光和經濟效益。因此，對企業而言，能夠理解並應用這些「爆紅」的關鍵因素，將是優化行銷策略、提升效益的重要途徑。</p>
+<p>本研究旨在通過分析 YouTube 上爆紅影片的各項變項與特徵，探討其是否有一定的模式或法則可供參考。藉由此分析，本文期望能為企業在設計產品、服務、或品牌形象宣傳影片時，提供實務上的建議，特別是在如何有效利用外包與內部資源，以降低宣傳成本並提升行銷效益的問題上。本研究將進一步探討，哪些類型或性質的影片適合與網紅合作進行外包製作，又有哪些形式或概念的影片可以透過培訓內部的公關或行銷團隊來完成，以達到成本控制與效果最大化的雙重目標。</p>
+</div>
+<div id="研究方法" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> 研究方法<a href="index.html#研究方法" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本研究將以量化方法為主，對 YouTube 上爆紅影片進行變項分析，主要包括以下步驟：</p>
+<div id="資料收集" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> 資料收集<a href="index.html#資料收集" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>運用 YouTube API 蒐集過去一年內在 YouTube 平台上獲得高點擊率的爆紅影片。收集的變項將包括影片的標題、描述、長度、發布時間、觀看次數、喜好數、留言數、影片類別、以及是否與網紅合作等。</p>
+</div>
+<div id="變項選擇" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> 變項選擇<a href="index.html#變項選擇" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>選定影響影片爆紅的關鍵變項，包括影片長度、內容主題（如娛樂、教學、產品展示等）、視覺效果、影片的互動性（如留言數與按讚數）、發布頻率。</p>
+<p>Y(Views) = X1(tf-idf) + X2(LDA) + X3(likes) + (timestamp)</p>
+</div>
+<div id="數據分析" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> 數據分析<a href="index.html#數據分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>運用文字探勘、統計分析技術，包括迴歸分析，以及Machine Learning機器學習等，來檢視不同變項與影片「爆紅」之間的關聯性，探討是否存在可預測的模式或法則。</p>
+</div>
+<div id="個案分析" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> 個案分析<a href="index.html#個案分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>針對成功爆紅的影片進行深入的個案分析，解析其成功因素與創作策略，並與不爆紅的影片進行對比，以識別出影片能爆紅的獨特特徵。</p>
+</div>
+</div>
+<div id="研究結果與討論" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> 研究結果與討論<a href="index.html#研究結果與討論" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>透過本研究的數據分析，我們預期將能識別出一些與影片爆紅高度相關的特徵變項，如影片的長度、內容主題的選擇、與網紅的合作模式等。初步假設是，不同類型的影片適合不同的製作與推廣策略，這與影片的內容特質、目標受眾及行銷目標密切相關。</p>
+<div id="與網紅合作的影片類型" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> 與網紅合作的影片類型<a href="index.html#與網紅合作的影片類型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>經分析，我們預期某些具有高度娛樂性、涉及流行文化或針對年輕受眾的影片，與網紅合作效果較好，這類影片依賴網紅的個人影響力與社群粉絲基礎，能夠快速獲得大量曝光。因此，建議企業針對這類影片選擇外包模式，與具有相關影響力的網紅合作，達到品牌迅速推廣的效果。</p>
+</div>
+<div id="內部團隊製作的影片類型" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> 內部團隊製作的影片類型<a href="index.html#內部團隊製作的影片類型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>另一方面，對於企業形象宣傳、產品說明、或具較高專業性的內容，這類影片可以通過培訓內部的公關或行銷團隊來製作。內部團隊對公司價值與產品知識的理解更為深入，因此在精準傳達品牌信息、控制內容品質方面具有優勢。透過內部製作，企業可以大幅降低外包成本，同時確保影片質量與品牌一致性。</p>
+</div>
+</div>
+<div id="結論與實務建議" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> 結論與實務建議<a href="index.html#結論與實務建議" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本研究發現，YouTube 爆紅影片的形成具有一定的規律性，而不同類型的影片適合不同的製作與推廣方式。針對娛樂性高、針對年輕受眾的影片，企業應考慮與網紅合作，通過外包模式提升影片的影響力。而針對企業形象宣傳、產品說明等具有較高專業性和一致性要求的影片，內部團隊的製作將更為合適。</p>
+<p>基於這些結果，我們對企業提出以下建議：</p>
+<pre><code>1.  選擇外包合作對象：對於適合外包的影片，應根據網紅的影響力、粉絲群特徵進行合作對象的篩選，以確保影片能夠觸達目標受眾。
+2.  培訓內部團隊：企業應考慮培訓內部的公關或行銷團隊，特別是在具專業性或品牌推廣為主要目標的影片製作上，這樣不僅能降低製作成本，還能確保影片內容的準確性與一致性。</code></pre>
+<p>未來研究可以進一步探討不同產業、產品類型下，影片製作策略對於品牌曝光與效益提升的具體影響，為企業提供更加精準的行銷決策依據。</p>
+</div>
+<div id="參考文獻" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> 參考文獻<a href="index.html#參考文獻" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://www.ingentaconnect.com/content/hsp/jdsmm/2015/00000003/00000001/art00004" class="uri">https://www.ingentaconnect.com/content/hsp/jdsmm/2015/00000003/00000001/art00004</a>
+<a href="https://eloncdn.blob.core.windows.net/eu3/sites/153/2017/06/08West.pdf" class="uri">https://eloncdn.blob.core.windows.net/eu3/sites/153/2017/06/08West.pdf</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="text-mining-of-youtube-comments.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

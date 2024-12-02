@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Text Mining of Youtube Comments | Youtube Influencers Trending Model</title>
+  <meta name="description" content="2 Text Mining of Youtube Comments | Youtube Influencers Trending Model" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Text Mining of Youtube Comments | Youtube Influencers Trending Model" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="Liam-TW/your-repo-name" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Text Mining of Youtube Comments | Youtube Influencers Trending Model" />
+  
+  
+  
+
+<meta name="author" content="Liam Chen" />
+
+
+<meta name="date" content="2024-11-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="next-step.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About this project</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#研究背景與目的"><i class="fa fa-check"></i><b>1.1</b> 研究背景與目的</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#研究方法"><i class="fa fa-check"></i><b>1.2</b> 研究方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#資料收集"><i class="fa fa-check"></i><b>1.2.1</b> 資料收集</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#變項選擇"><i class="fa fa-check"></i><b>1.2.2</b> 變項選擇</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#數據分析"><i class="fa fa-check"></i><b>1.2.3</b> 數據分析</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#個案分析"><i class="fa fa-check"></i><b>1.2.4</b> 個案分析</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#研究結果與討論"><i class="fa fa-check"></i><b>1.3</b> 研究結果與討論</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#與網紅合作的影片類型"><i class="fa fa-check"></i><b>1.3.1</b> 與網紅合作的影片類型</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#內部團隊製作的影片類型"><i class="fa fa-check"></i><b>1.3.2</b> 內部團隊製作的影片類型</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#結論與實務建議"><i class="fa fa-check"></i><b>1.4</b> 結論與實務建議</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#參考文獻"><i class="fa fa-check"></i><b>1.5</b> 參考文獻</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html"><i class="fa fa-check"></i><b>2</b> Text Mining of Youtube Comments</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#準備-r-python-環境"><i class="fa fa-check"></i><b>2.1</b> 準備 R + Python 環境</a></li>
+<li class="chapter" data-level="2.2" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#建置-dataset"><i class="fa fa-check"></i><b>2.2</b> 建置 Dataset</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#by-api-尋找影片標籤"><i class="fa fa-check"></i><b>2.2.1</b> By API 尋找影片標籤</a></li>
+<li class="chapter" data-level="2.2.2" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#by-api-查找符合條件的-url-清單"><i class="fa fa-check"></i><b>2.2.2</b> By API 查找符合條件的 url 清單</a></li>
+<li class="chapter" data-level="2.2.3" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#爬取留言"><i class="fa fa-check"></i><b>2.2.3</b> 爬取留言</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#文字探勘分析"><i class="fa fa-check"></i><b>2.3</b> 文字探勘分析</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#套件準備"><i class="fa fa-check"></i><b>2.3.1</b> 套件準備</a></li>
+<li class="chapter" data-level="2.3.2" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#文本清理"><i class="fa fa-check"></i><b>2.3.2</b> 文本清理</a></li>
+<li class="chapter" data-level="2.3.3" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#case-1-詞頻文字雲"><i class="fa fa-check"></i><b>2.3.3</b> Case 1 詞頻&amp;文字雲</a></li>
+<li class="chapter" data-level="2.3.4" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#case-2-情感分析"><i class="fa fa-check"></i><b>2.3.4</b> Case 2 情感分析</a></li>
+<li class="chapter" data-level="2.3.5" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#case-3-主題模型"><i class="fa fa-check"></i><b>2.3.5</b> Case 3 主題模型</a></li>
+<li class="chapter" data-level="2.3.6" data-path="text-mining-of-youtube-comments.html"><a href="text-mining-of-youtube-comments.html#case-4-詞性標注"><i class="fa fa-check"></i><b>2.3.6</b> Case 4 詞性標注</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="next-step.html"><a href="next-step.html"><i class="fa fa-check"></i><b>3</b> Next Step?</a></li>
+<li class="chapter" data-level="4" data-path="重點回顧.html"><a href="重點回顧.html"><i class="fa fa-check"></i><b>4</b> 11/22 重點回顧</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="重點回顧.html"><a href="重點回顧.html#step.1-刪除非英文評論"><i class="fa fa-check"></i><b>4.1</b> Step.1 刪除非英文評論</a></li>
+<li class="chapter" data-level="4.2" data-path="重點回顧.html"><a href="重點回顧.html#step.2-文本再清理"><i class="fa fa-check"></i><b>4.2</b> Step.2 文本再清理</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="重點回顧.html"><a href="重點回顧.html#case-1-詞頻文字雲-1"><i class="fa fa-check"></i><b>4.2.1</b> Case 1 詞頻&amp;文字雲</a></li>
+<li class="chapter" data-level="4.2.2" data-path="重點回顧.html"><a href="重點回顧.html#case-2-情感分析-1"><i class="fa fa-check"></i><b>4.2.2</b> Case 2 情感分析</a></li>
+<li class="chapter" data-level="4.2.3" data-path="重點回顧.html"><a href="重點回顧.html#case-3-主題模型-1"><i class="fa fa-check"></i><b>4.2.3</b> Case 3 主題模型</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="重點回顧.html"><a href="重點回顧.html#step.3-變數修正時間按讚數"><i class="fa fa-check"></i><b>4.3</b> Step.3 變數修正（時間&amp;按讚數）</a></li>
+<li class="chapter" data-level="4.4" data-path="重點回顧.html"><a href="重點回顧.html#what-now..最新資料視圖"><i class="fa fa-check"></i><b>4.4</b> What now..最新資料視圖</a></li>
+<li class="chapter" data-level="4.5" data-path="重點回顧.html"><a href="重點回顧.html#轉換寬格式的必要"><i class="fa fa-check"></i><b>4.5</b> 轉換寬格式的必要？</a></li>
+<li class="chapter" data-level="4.6" data-path="重點回顧.html"><a href="重點回顧.html#step.4-ml-model-selection"><i class="fa fa-check"></i><b>4.6</b> Step.4 ML model selection</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Youtube Influencers Trending Model</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="text-mining-of-youtube-comments" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Text Mining of Youtube Comments<a href="text-mining-of-youtube-comments.html#text-mining-of-youtube-comments" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="準備-r-python-環境" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> 準備 R + Python 環境<a href="text-mining-of-youtube-comments.html#準備-r-python-環境" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="text-mining-of-youtube-comments.html#cb2-1" tabindex="-1"></a><span class="co">#準備Anaconda（虛擬環境管理平台，解決pip安裝包衝突）</span></span>
+<span id="cb2-2"><a href="text-mining-of-youtube-comments.html#cb2-2" tabindex="-1"></a><span class="co">#準備ChromeDriver （藉由Py自動化控制Google Chrome）</span></span>
+<span id="cb2-3"><a href="text-mining-of-youtube-comments.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="text-mining-of-youtube-comments.html#cb2-4" tabindex="-1"></a><span class="fu">library</span>(reticulate) <span class="co">#用來整合Py的R套件</span></span>
+<span id="cb2-5"><a href="text-mining-of-youtube-comments.html#cb2-5" tabindex="-1"></a><span class="co">#設定Python環境</span></span>
+<span id="cb2-6"><a href="text-mining-of-youtube-comments.html#cb2-6" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">&quot;/opt/anaconda3/envs/emajor/bin/python&quot;</span>, <span class="at">required =</span> T)</span>
+<span id="cb2-7"><a href="text-mining-of-youtube-comments.html#cb2-7" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">&quot;emajor&quot;</span>)</span>
+<span id="cb2-8"><a href="text-mining-of-youtube-comments.html#cb2-8" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="text-mining-of-youtube-comments.html#cb2-9" tabindex="-1"></a><span class="co"># 安裝pandas模組</span></span>
+<span id="cb2-10"><a href="text-mining-of-youtube-comments.html#cb2-10" tabindex="-1"></a><span class="co"># py_install(&quot;pandas&quot;)</span></span>
+<span id="cb2-11"><a href="text-mining-of-youtube-comments.html#cb2-11" tabindex="-1"></a><span class="co"># （ Selenium &amp; webdriver_manager 要用終端機conda安裝 ）</span></span>
+<span id="cb2-12"><a href="text-mining-of-youtube-comments.html#cb2-12" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="text-mining-of-youtube-comments.html#cb2-13" tabindex="-1"></a><span class="co">#開啟Ptyhon腳本，用Py的套件進行爬蟲</span></span></code></pre></div>
+</div>
+<div id="建置-dataset" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> 建置 Dataset<a href="text-mining-of-youtube-comments.html#建置-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="by-api-尋找影片標籤" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> By API 尋找影片標籤<a href="text-mining-of-youtube-comments.html#by-api-尋找影片標籤" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="text-mining-of-youtube-comments.html#cb3-1" tabindex="-1"></a><span class="im">from</span> googleapiclient.discovery <span class="im">import</span> build</span>
+<span id="cb3-2"><a href="text-mining-of-youtube-comments.html#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="text-mining-of-youtube-comments.html#cb3-3" tabindex="-1"></a>api_key <span class="op">=</span> <span class="st">&#39;YOUR_API_KEY&#39;</span></span>
+<span id="cb3-4"><a href="text-mining-of-youtube-comments.html#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="text-mining-of-youtube-comments.html#cb3-5" tabindex="-1"></a>youtube <span class="op">=</span> build(<span class="st">&#39;youtube&#39;</span>, <span class="st">&#39;v3&#39;</span>, developerKey<span class="op">=</span>api_key)</span>
+<span id="cb3-6"><a href="text-mining-of-youtube-comments.html#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="text-mining-of-youtube-comments.html#cb3-7" tabindex="-1"></a><span class="kw">def</span> get_video_categories(region_code<span class="op">=</span><span class="st">&#39;TW&#39;</span>):</span>
+<span id="cb3-8"><a href="text-mining-of-youtube-comments.html#cb3-8" tabindex="-1"></a>    categories_response <span class="op">=</span> youtube.videoCategories().<span class="bu">list</span>(</span>
+<span id="cb3-9"><a href="text-mining-of-youtube-comments.html#cb3-9" tabindex="-1"></a>        part<span class="op">=</span><span class="st">&#39;snippet&#39;</span>,</span>
+<span id="cb3-10"><a href="text-mining-of-youtube-comments.html#cb3-10" tabindex="-1"></a>        regionCode<span class="op">=</span>region_code</span>
+<span id="cb3-11"><a href="text-mining-of-youtube-comments.html#cb3-11" tabindex="-1"></a>    ).execute()</span>
+<span id="cb3-12"><a href="text-mining-of-youtube-comments.html#cb3-12" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="text-mining-of-youtube-comments.html#cb3-13" tabindex="-1"></a>    categories <span class="op">=</span> []</span>
+<span id="cb3-14"><a href="text-mining-of-youtube-comments.html#cb3-14" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> categories_response[<span class="st">&#39;items&#39;</span>]:</span>
+<span id="cb3-15"><a href="text-mining-of-youtube-comments.html#cb3-15" tabindex="-1"></a>        categories.append({</span>
+<span id="cb3-16"><a href="text-mining-of-youtube-comments.html#cb3-16" tabindex="-1"></a>            <span class="st">&#39;id&#39;</span>: item[<span class="st">&#39;id&#39;</span>],</span>
+<span id="cb3-17"><a href="text-mining-of-youtube-comments.html#cb3-17" tabindex="-1"></a>            <span class="st">&#39;title&#39;</span>: item[<span class="st">&#39;snippet&#39;</span>][<span class="st">&#39;title&#39;</span>]</span>
+<span id="cb3-18"><a href="text-mining-of-youtube-comments.html#cb3-18" tabindex="-1"></a>        })</span>
+<span id="cb3-19"><a href="text-mining-of-youtube-comments.html#cb3-19" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="text-mining-of-youtube-comments.html#cb3-20" tabindex="-1"></a>    <span class="cf">return</span> categories</span>
+<span id="cb3-21"><a href="text-mining-of-youtube-comments.html#cb3-21" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="text-mining-of-youtube-comments.html#cb3-22" tabindex="-1"></a>categories <span class="op">=</span> get_video_categories()</span>
+<span id="cb3-23"><a href="text-mining-of-youtube-comments.html#cb3-23" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="text-mining-of-youtube-comments.html#cb3-24" tabindex="-1"></a><span class="cf">for</span> category <span class="kw">in</span> categories:</span>
+<span id="cb3-25"><a href="text-mining-of-youtube-comments.html#cb3-25" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Category ID: </span><span class="sc">{</span>category[<span class="st">&#39;id&#39;</span>]<span class="sc">}</span><span class="ss">, Title: </span><span class="sc">{</span>category[<span class="st">&#39;title&#39;</span>]<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="text-mining-of-youtube-comments.html#cb4-1" tabindex="-1"></a><span class="co"># 讀取 CSV 文件</span></span>
+<span id="cb4-2"><a href="text-mining-of-youtube-comments.html#cb4-2" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/liam/Desktop/NTNU/碩二/1131/文字探勘/Category.csv&quot;</span></span>
+<span id="cb4-3"><a href="text-mining-of-youtube-comments.html#cb4-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(file_path)</span>
+<span id="cb4-4"><a href="text-mining-of-youtube-comments.html#cb4-4" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="text-mining-of-youtube-comments.html#cb4-5" tabindex="-1"></a><span class="co"># 顯示前 5 行的具體列</span></span>
+<span id="cb4-6"><a href="text-mining-of-youtube-comments.html#cb4-6" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb4-7"><a href="text-mining-of-youtube-comments.html#cb4-7" tabindex="-1"></a><span class="fu">kable</span>(data[, <span class="fu">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;Category&quot;</span>)], <span class="at">caption =</span> <span class="st">&quot;YouTube 音樂類影片前五列數據&quot;</span>)</span></code></pre></div>
+</div>
+<div id="by-api-查找符合條件的-url-清單" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> By API 查找符合條件的 url 清單<a href="text-mining-of-youtube-comments.html#by-api-查找符合條件的-url-清單" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="text-mining-of-youtube-comments.html#cb5-1" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb5-2"><a href="text-mining-of-youtube-comments.html#cb5-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-3"><a href="text-mining-of-youtube-comments.html#cb5-3" tabindex="-1"></a><span class="im">from</span> googleapiclient.discovery <span class="im">import</span> build</span>
+<span id="cb5-4"><a href="text-mining-of-youtube-comments.html#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="text-mining-of-youtube-comments.html#cb5-5" tabindex="-1"></a>api_key <span class="op">=</span> <span class="st">&#39;YOUR_API_KEY&#39;</span></span>
+<span id="cb5-6"><a href="text-mining-of-youtube-comments.html#cb5-6" tabindex="-1"></a>youtube <span class="op">=</span> build(<span class="st">&#39;youtube&#39;</span>, <span class="st">&#39;v3&#39;</span>, developerKey<span class="op">=</span>api_key)</span>
+<span id="cb5-7"><a href="text-mining-of-youtube-comments.html#cb5-7" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="text-mining-of-youtube-comments.html#cb5-8" tabindex="-1"></a>keyword <span class="op">=</span> <span class="st">&#39;Music&#39;</span></span>
+<span id="cb5-9"><a href="text-mining-of-youtube-comments.html#cb5-9" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="text-mining-of-youtube-comments.html#cb5-10" tabindex="-1"></a><span class="kw">def</span> search_videos(max_results<span class="op">=</span><span class="dv">50</span>):</span>
+<span id="cb5-11"><a href="text-mining-of-youtube-comments.html#cb5-11" tabindex="-1"></a>    search_response <span class="op">=</span> youtube.search().<span class="bu">list</span>(</span>
+<span id="cb5-12"><a href="text-mining-of-youtube-comments.html#cb5-12" tabindex="-1"></a>        part<span class="op">=</span><span class="st">&#39;snippet&#39;</span>,</span>
+<span id="cb5-13"><a href="text-mining-of-youtube-comments.html#cb5-13" tabindex="-1"></a>        <span class="bu">type</span><span class="op">=</span><span class="st">&#39;video&#39;</span>,</span>
+<span id="cb5-14"><a href="text-mining-of-youtube-comments.html#cb5-14" tabindex="-1"></a>        q<span class="op">=</span>keyword,</span>
+<span id="cb5-15"><a href="text-mining-of-youtube-comments.html#cb5-15" tabindex="-1"></a>        maxResults<span class="op">=</span>max_results,</span>
+<span id="cb5-16"><a href="text-mining-of-youtube-comments.html#cb5-16" tabindex="-1"></a>        order<span class="op">=</span><span class="st">&#39;viewCount&#39;</span></span>
+<span id="cb5-17"><a href="text-mining-of-youtube-comments.html#cb5-17" tabindex="-1"></a>    ).execute()</span>
+<span id="cb5-18"><a href="text-mining-of-youtube-comments.html#cb5-18" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="text-mining-of-youtube-comments.html#cb5-19" tabindex="-1"></a>    video_ids <span class="op">=</span> [item[<span class="st">&#39;id&#39;</span>][<span class="st">&#39;videoId&#39;</span>] <span class="cf">for</span> item <span class="kw">in</span> search_response[<span class="st">&#39;items&#39;</span>]]</span>
+<span id="cb5-20"><a href="text-mining-of-youtube-comments.html#cb5-20" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="text-mining-of-youtube-comments.html#cb5-21" tabindex="-1"></a>    video_details <span class="op">=</span> youtube.videos().<span class="bu">list</span>(</span>
+<span id="cb5-22"><a href="text-mining-of-youtube-comments.html#cb5-22" tabindex="-1"></a>        <span class="bu">id</span><span class="op">=</span><span class="st">&#39;,&#39;</span>.join(video_ids),</span>
+<span id="cb5-23"><a href="text-mining-of-youtube-comments.html#cb5-23" tabindex="-1"></a>        part<span class="op">=</span><span class="st">&#39;snippet,statistics&#39;</span></span>
+<span id="cb5-24"><a href="text-mining-of-youtube-comments.html#cb5-24" tabindex="-1"></a>    ).execute()</span>
+<span id="cb5-25"><a href="text-mining-of-youtube-comments.html#cb5-25" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="text-mining-of-youtube-comments.html#cb5-26" tabindex="-1"></a>    videos_over_100m <span class="op">=</span> []</span>
+<span id="cb5-27"><a href="text-mining-of-youtube-comments.html#cb5-27" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> video_details[<span class="st">&#39;items&#39;</span>]:</span>
+<span id="cb5-28"><a href="text-mining-of-youtube-comments.html#cb5-28" tabindex="-1"></a>        view_count <span class="op">=</span> <span class="bu">int</span>(item[<span class="st">&#39;statistics&#39;</span>][<span class="st">&#39;viewCount&#39;</span>])</span>
+<span id="cb5-29"><a href="text-mining-of-youtube-comments.html#cb5-29" tabindex="-1"></a>        <span class="cf">if</span> view_count <span class="op">&gt;=</span> <span class="dv">10000000</span>:</span>
+<span id="cb5-30"><a href="text-mining-of-youtube-comments.html#cb5-30" tabindex="-1"></a>            videos_over_100m.append({</span>
+<span id="cb5-31"><a href="text-mining-of-youtube-comments.html#cb5-31" tabindex="-1"></a>                <span class="st">&#39;id&#39;</span>: item[<span class="st">&#39;id&#39;</span>],</span>
+<span id="cb5-32"><a href="text-mining-of-youtube-comments.html#cb5-32" tabindex="-1"></a>                <span class="st">&#39;title&#39;</span>: item[<span class="st">&#39;snippet&#39;</span>][<span class="st">&#39;title&#39;</span>],</span>
+<span id="cb5-33"><a href="text-mining-of-youtube-comments.html#cb5-33" tabindex="-1"></a>                <span class="st">&#39;url&#39;</span>: <span class="ss">f&quot;https://www.youtube.com/watch?v=</span><span class="sc">{</span>item[<span class="st">&#39;id&#39;</span>]<span class="sc">}</span><span class="ss">&quot;</span>,</span>
+<span id="cb5-34"><a href="text-mining-of-youtube-comments.html#cb5-34" tabindex="-1"></a>                <span class="st">&#39;views&#39;</span>: view_count</span>
+<span id="cb5-35"><a href="text-mining-of-youtube-comments.html#cb5-35" tabindex="-1"></a>            })</span>
+<span id="cb5-36"><a href="text-mining-of-youtube-comments.html#cb5-36" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="text-mining-of-youtube-comments.html#cb5-37" tabindex="-1"></a>    <span class="cf">return</span> videos_over_100m</span>
+<span id="cb5-38"><a href="text-mining-of-youtube-comments.html#cb5-38" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="text-mining-of-youtube-comments.html#cb5-39" tabindex="-1"></a>all_videos <span class="op">=</span> []</span>
+<span id="cb5-40"><a href="text-mining-of-youtube-comments.html#cb5-40" tabindex="-1"></a>attempts <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-41"><a href="text-mining-of-youtube-comments.html#cb5-41" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="text-mining-of-youtube-comments.html#cb5-42" tabindex="-1"></a><span class="cf">while</span> <span class="bu">len</span>(all_videos) <span class="op">&lt;</span> <span class="dv">200</span> <span class="kw">and</span> attempts <span class="op">&lt;</span> <span class="dv">5</span>:</span>
+<span id="cb5-43"><a href="text-mining-of-youtube-comments.html#cb5-43" tabindex="-1"></a>    videos <span class="op">=</span> search_videos(max_results<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb5-44"><a href="text-mining-of-youtube-comments.html#cb5-44" tabindex="-1"></a>    new_videos <span class="op">=</span> [video <span class="cf">for</span> video <span class="kw">in</span> videos <span class="cf">if</span> video[<span class="st">&#39;id&#39;</span>] <span class="kw">not</span> <span class="kw">in</span> [v[<span class="st">&#39;id&#39;</span>] <span class="cf">for</span> v <span class="kw">in</span> all_videos]]</span>
+<span id="cb5-45"><a href="text-mining-of-youtube-comments.html#cb5-45" tabindex="-1"></a>    </span>
+<span id="cb5-46"><a href="text-mining-of-youtube-comments.html#cb5-46" tabindex="-1"></a>    <span class="cf">if</span> new_videos:</span>
+<span id="cb5-47"><a href="text-mining-of-youtube-comments.html#cb5-47" tabindex="-1"></a>        all_videos.extend(new_videos)</span>
+<span id="cb5-48"><a href="text-mining-of-youtube-comments.html#cb5-48" tabindex="-1"></a>        attempts <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-49"><a href="text-mining-of-youtube-comments.html#cb5-49" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-50"><a href="text-mining-of-youtube-comments.html#cb5-50" tabindex="-1"></a>        attempts <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-51"><a href="text-mining-of-youtube-comments.html#cb5-51" tabindex="-1"></a></span>
+<span id="cb5-52"><a href="text-mining-of-youtube-comments.html#cb5-52" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(all_videos)</span>
+<span id="cb5-53"><a href="text-mining-of-youtube-comments.html#cb5-53" tabindex="-1"></a>df.to_csv(<span class="st">&#39;/Users/liam/Desktop/NTNU/碩二/1131/文字探勘/youtube_music_videos.csv&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="text-mining-of-youtube-comments.html#cb6-1" tabindex="-1"></a><span class="co"># 讀取 CSV 文件</span></span>
+<span id="cb6-2"><a href="text-mining-of-youtube-comments.html#cb6-2" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/liam/Desktop/NTNU/碩二/1131/文字探勘/youtube_Music2_videos_over_100m.csv&quot;</span></span>
+<span id="cb6-3"><a href="text-mining-of-youtube-comments.html#cb6-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(file_path)</span>
+<span id="cb6-4"><a href="text-mining-of-youtube-comments.html#cb6-4" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="text-mining-of-youtube-comments.html#cb6-5" tabindex="-1"></a><span class="co"># 顯示前 5 行的具體列</span></span>
+<span id="cb6-6"><a href="text-mining-of-youtube-comments.html#cb6-6" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb6-7"><a href="text-mining-of-youtube-comments.html#cb6-7" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(data[, <span class="fu">c</span>(<span class="st">&quot;title&quot;</span>, <span class="st">&quot;url&quot;</span>,<span class="st">&quot;views&quot;</span>)]), <span class="at">caption =</span> <span class="st">&quot;YouTube 音樂類影片前五列數據&quot;</span>)</span></code></pre></div>
+</div>
+<div id="爬取留言" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> 爬取留言<a href="text-mining-of-youtube-comments.html#爬取留言" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="text-mining-of-youtube-comments.html#cb7-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="text-mining-of-youtube-comments.html#cb7-2" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
+<span id="cb7-3"><a href="text-mining-of-youtube-comments.html#cb7-3" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.chrome.service <span class="im">import</span> Service</span>
+<span id="cb7-4"><a href="text-mining-of-youtube-comments.html#cb7-4" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.chrome.options <span class="im">import</span> Options</span>
+<span id="cb7-5"><a href="text-mining-of-youtube-comments.html#cb7-5" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
+<span id="cb7-6"><a href="text-mining-of-youtube-comments.html#cb7-6" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.ui <span class="im">import</span> WebDriverWait</span>
+<span id="cb7-7"><a href="text-mining-of-youtube-comments.html#cb7-7" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support <span class="im">import</span> expected_conditions <span class="im">as</span> EC</span>
+<span id="cb7-8"><a href="text-mining-of-youtube-comments.html#cb7-8" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb7-9"><a href="text-mining-of-youtube-comments.html#cb7-9" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="text-mining-of-youtube-comments.html#cb7-10" tabindex="-1"></a>video_data <span class="op">=</span> pd.read_csv(<span class="st">&#39;/Users/liam/Desktop/NTNU/碩二/1131/文字探勘/youtube_music_videos.csv&#39;</span>)</span>
+<span id="cb7-11"><a href="text-mining-of-youtube-comments.html#cb7-11" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="text-mining-of-youtube-comments.html#cb7-12" tabindex="-1"></a>options <span class="op">=</span> Options()</span>
+<span id="cb7-13"><a href="text-mining-of-youtube-comments.html#cb7-13" tabindex="-1"></a>options.add_argument(<span class="st">&quot;--disable-blink-features=AutomationControlled&quot;</span>)</span>
+<span id="cb7-14"><a href="text-mining-of-youtube-comments.html#cb7-14" tabindex="-1"></a>options.add_argument(<span class="st">&quot;--disable-infobars&quot;</span>)</span>
+<span id="cb7-15"><a href="text-mining-of-youtube-comments.html#cb7-15" tabindex="-1"></a>options.add_argument(<span class="st">&quot;--disable-extensions&quot;</span>)</span>
+<span id="cb7-16"><a href="text-mining-of-youtube-comments.html#cb7-16" tabindex="-1"></a>options.add_argument(<span class="st">&quot;start-maximized&quot;</span>)</span>
+<span id="cb7-17"><a href="text-mining-of-youtube-comments.html#cb7-17" tabindex="-1"></a>options.add_experimental_option(<span class="st">&quot;excludeSwitches&quot;</span>, [<span class="st">&quot;enable-automation&quot;</span>])</span>
+<span id="cb7-18"><a href="text-mining-of-youtube-comments.html#cb7-18" tabindex="-1"></a>options.add_experimental_option(<span class="st">&#39;useAutomationExtension&#39;</span>, <span class="va">False</span>)</span>
+<span id="cb7-19"><a href="text-mining-of-youtube-comments.html#cb7-19" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="text-mining-of-youtube-comments.html#cb7-20" tabindex="-1"></a>service <span class="op">=</span> Service(executable_path<span class="op">=</span><span class="st">&quot;/Users/liam/Desktop/NTNU/碩二/1131/文字探勘/chromedriver-mac-arm64/chromedriver&quot;</span>)</span>
+<span id="cb7-21"><a href="text-mining-of-youtube-comments.html#cb7-21" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Chrome(service<span class="op">=</span>service, options<span class="op">=</span>options)</span>
+<span id="cb7-22"><a href="text-mining-of-youtube-comments.html#cb7-22" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="text-mining-of-youtube-comments.html#cb7-23" tabindex="-1"></a><span class="kw">def</span> scroll_to_load_comments():</span>
+<span id="cb7-24"><a href="text-mining-of-youtube-comments.html#cb7-24" tabindex="-1"></a>    last_height <span class="op">=</span> driver.execute_script(<span class="st">&#39;return document.documentElement.scrollHeight&#39;</span>)</span>
+<span id="cb7-25"><a href="text-mining-of-youtube-comments.html#cb7-25" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb7-26"><a href="text-mining-of-youtube-comments.html#cb7-26" tabindex="-1"></a>        driver.execute_script(<span class="st">&quot;window.scrollBy(0, 800);&quot;</span>)</span>
+<span id="cb7-27"><a href="text-mining-of-youtube-comments.html#cb7-27" tabindex="-1"></a>        time.sleep(<span class="dv">2</span>)</span>
+<span id="cb7-28"><a href="text-mining-of-youtube-comments.html#cb7-28" tabindex="-1"></a>        </span>
+<span id="cb7-29"><a href="text-mining-of-youtube-comments.html#cb7-29" tabindex="-1"></a>        comments <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">&#39;//*[@id=&quot;content-text&quot;]&#39;</span>)</span>
+<span id="cb7-30"><a href="text-mining-of-youtube-comments.html#cb7-30" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(comments) <span class="op">&gt;=</span> <span class="dv">30</span>:</span>
+<span id="cb7-31"><a href="text-mining-of-youtube-comments.html#cb7-31" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb7-32"><a href="text-mining-of-youtube-comments.html#cb7-32" tabindex="-1"></a>        </span>
+<span id="cb7-33"><a href="text-mining-of-youtube-comments.html#cb7-33" tabindex="-1"></a>        new_height <span class="op">=</span> driver.execute_script(<span class="st">&#39;return document.documentElement.scrollHeight&#39;</span>)</span>
+<span id="cb7-34"><a href="text-mining-of-youtube-comments.html#cb7-34" tabindex="-1"></a>        <span class="cf">if</span> new_height <span class="op">==</span> last_height:</span>
+<span id="cb7-35"><a href="text-mining-of-youtube-comments.html#cb7-35" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb7-36"><a href="text-mining-of-youtube-comments.html#cb7-36" tabindex="-1"></a>        last_height <span class="op">=</span> new_height</span>
+<span id="cb7-37"><a href="text-mining-of-youtube-comments.html#cb7-37" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="text-mining-of-youtube-comments.html#cb7-38" tabindex="-1"></a><span class="kw">def</span> get_comments(video_url):</span>
+<span id="cb7-39"><a href="text-mining-of-youtube-comments.html#cb7-39" tabindex="-1"></a>    driver.get(video_url)</span>
+<span id="cb7-40"><a href="text-mining-of-youtube-comments.html#cb7-40" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb7-41"><a href="text-mining-of-youtube-comments.html#cb7-41" tabindex="-1"></a>        scroll_to_load_comments()</span>
+<span id="cb7-42"><a href="text-mining-of-youtube-comments.html#cb7-42" tabindex="-1"></a>        WebDriverWait(driver, <span class="dv">10</span>).until(</span>
+<span id="cb7-43"><a href="text-mining-of-youtube-comments.html#cb7-43" tabindex="-1"></a>            EC.presence_of_element_located((By.XPATH, <span class="st">&#39;//*[@id=&quot;content-text&quot;]&#39;</span>))</span>
+<span id="cb7-44"><a href="text-mining-of-youtube-comments.html#cb7-44" tabindex="-1"></a>        )</span>
+<span id="cb7-45"><a href="text-mining-of-youtube-comments.html#cb7-45" tabindex="-1"></a>        time.sleep(<span class="dv">2</span>)</span>
+<span id="cb7-46"><a href="text-mining-of-youtube-comments.html#cb7-46" tabindex="-1"></a>        comments <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">&#39;//*[@id=&quot;content-text&quot;]&#39;</span>)[:<span class="dv">30</span>]</span>
+<span id="cb7-47"><a href="text-mining-of-youtube-comments.html#cb7-47" tabindex="-1"></a>        <span class="cf">return</span> [comment.text <span class="cf">for</span> comment <span class="kw">in</span> comments]</span>
+<span id="cb7-48"><a href="text-mining-of-youtube-comments.html#cb7-48" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb7-49"><a href="text-mining-of-youtube-comments.html#cb7-49" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;留言區未加載: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb7-50"><a href="text-mining-of-youtube-comments.html#cb7-50" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb7-51"><a href="text-mining-of-youtube-comments.html#cb7-51" tabindex="-1"></a></span>
+<span id="cb7-52"><a href="text-mining-of-youtube-comments.html#cb7-52" tabindex="-1"></a>all_comments <span class="op">=</span> []</span>
+<span id="cb7-53"><a href="text-mining-of-youtube-comments.html#cb7-53" tabindex="-1"></a><span class="cf">for</span> index, row <span class="kw">in</span> video_data.iterrows():</span>
+<span id="cb7-54"><a href="text-mining-of-youtube-comments.html#cb7-54" tabindex="-1"></a>    video_url <span class="op">=</span> row[<span class="st">&#39;url&#39;</span>]</span>
+<span id="cb7-55"><a href="text-mining-of-youtube-comments.html#cb7-55" tabindex="-1"></a>    title <span class="op">=</span> row[<span class="st">&#39;title&#39;</span>]</span>
+<span id="cb7-56"><a href="text-mining-of-youtube-comments.html#cb7-56" tabindex="-1"></a>    views <span class="op">=</span> row[<span class="st">&#39;views&#39;</span>]</span>
+<span id="cb7-57"><a href="text-mining-of-youtube-comments.html#cb7-57" tabindex="-1"></a></span>
+<span id="cb7-58"><a href="text-mining-of-youtube-comments.html#cb7-58" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb7-59"><a href="text-mining-of-youtube-comments.html#cb7-59" tabindex="-1"></a>        comments <span class="op">=</span> get_comments(video_url)</span>
+<span id="cb7-60"><a href="text-mining-of-youtube-comments.html#cb7-60" tabindex="-1"></a>        <span class="cf">for</span> comment <span class="kw">in</span> comments:</span>
+<span id="cb7-61"><a href="text-mining-of-youtube-comments.html#cb7-61" tabindex="-1"></a>            all_comments.append({</span>
+<span id="cb7-62"><a href="text-mining-of-youtube-comments.html#cb7-62" tabindex="-1"></a>                <span class="st">&#39;title&#39;</span>: title,</span>
+<span id="cb7-63"><a href="text-mining-of-youtube-comments.html#cb7-63" tabindex="-1"></a>                <span class="st">&#39;url&#39;</span>: video_url,</span>
+<span id="cb7-64"><a href="text-mining-of-youtube-comments.html#cb7-64" tabindex="-1"></a>                <span class="st">&#39;views&#39;</span>: views,</span>
+<span id="cb7-65"><a href="text-mining-of-youtube-comments.html#cb7-65" tabindex="-1"></a>                <span class="st">&#39;comment&#39;</span>: comment</span>
+<span id="cb7-66"><a href="text-mining-of-youtube-comments.html#cb7-66" tabindex="-1"></a>            })</span>
+<span id="cb7-67"><a href="text-mining-of-youtube-comments.html#cb7-67" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb7-68"><a href="text-mining-of-youtube-comments.html#cb7-68" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;無法爬取 </span><span class="sc">{</span>video_url<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb7-69"><a href="text-mining-of-youtube-comments.html#cb7-69" tabindex="-1"></a></span>
+<span id="cb7-70"><a href="text-mining-of-youtube-comments.html#cb7-70" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(all_comments)</span>
+<span id="cb7-71"><a href="text-mining-of-youtube-comments.html#cb7-71" tabindex="-1"></a>df.to_csv(<span class="st">&#39;/Users/liam/Desktop/NTNU/碩二/1131/文字探勘/youtube_comments.csv&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-72"><a href="text-mining-of-youtube-comments.html#cb7-72" tabindex="-1"></a></span>
+<span id="cb7-73"><a href="text-mining-of-youtube-comments.html#cb7-73" tabindex="-1"></a>driver.quit()</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="text-mining-of-youtube-comments.html#cb8-1" tabindex="-1"></a><span class="co"># 讀取 CSV 文件</span></span>
+<span id="cb8-2"><a href="text-mining-of-youtube-comments.html#cb8-2" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/liam/Desktop/NTNU/碩二/1131/文字探勘/youtube_comments_music.csv&quot;</span></span>
+<span id="cb8-3"><a href="text-mining-of-youtube-comments.html#cb8-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(file_path)</span>
+<span id="cb8-4"><a href="text-mining-of-youtube-comments.html#cb8-4" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="text-mining-of-youtube-comments.html#cb8-5" tabindex="-1"></a><span class="co"># 顯示前 5 行的具體列</span></span>
+<span id="cb8-6"><a href="text-mining-of-youtube-comments.html#cb8-6" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb8-7"><a href="text-mining-of-youtube-comments.html#cb8-7" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(data[, <span class="fu">c</span>(<span class="st">&quot;title&quot;</span>, <span class="st">&quot;comment&quot;</span>)]), <span class="at">caption =</span> <span class="st">&quot;YouTube 音樂類影片前五列數據&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="文字探勘分析" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 文字探勘分析<a href="text-mining-of-youtube-comments.html#文字探勘分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="套件準備" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> 套件準備<a href="text-mining-of-youtube-comments.html#套件準備" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="text-mining-of-youtube-comments.html#cb9-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tm&quot;</span>)</span>
+<span id="cb9-2"><a href="text-mining-of-youtube-comments.html#cb9-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;SnowballC&quot;</span>)</span>
+<span id="cb9-3"><a href="text-mining-of-youtube-comments.html#cb9-3" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;jiebaR&quot;</span>)</span>
+<span id="cb9-4"><a href="text-mining-of-youtube-comments.html#cb9-4" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>)</span>
+<span id="cb9-5"><a href="text-mining-of-youtube-comments.html#cb9-5" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb9-6"><a href="text-mining-of-youtube-comments.html#cb9-6" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb9-7"><a href="text-mining-of-youtube-comments.html#cb9-7" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;wordcloud&quot;</span>)</span>
+<span id="cb9-8"><a href="text-mining-of-youtube-comments.html#cb9-8" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;syuzhet&quot;</span>)</span>
+<span id="cb9-9"><a href="text-mining-of-youtube-comments.html#cb9-9" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;igraph&quot;</span>)</span>
+<span id="cb9-10"><a href="text-mining-of-youtube-comments.html#cb9-10" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;topicmodels&quot;</span>)</span>
+<span id="cb9-11"><a href="text-mining-of-youtube-comments.html#cb9-11" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;forcats&quot;</span>)</span>
+<span id="cb9-12"><a href="text-mining-of-youtube-comments.html#cb9-12" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;textstem&quot;</span>)</span>
+<span id="cb9-13"><a href="text-mining-of-youtube-comments.html#cb9-13" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;udpipe&quot;</span>)</span></code></pre></div>
+</div>
+<div id="文本清理" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 文本清理<a href="text-mining-of-youtube-comments.html#文本清理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="text-mining-of-youtube-comments.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb10-2"><a href="text-mining-of-youtube-comments.html#cb10-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-3"><a href="text-mining-of-youtube-comments.html#cb10-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-4"><a href="text-mining-of-youtube-comments.html#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="text-mining-of-youtube-comments.html#cb10-5" tabindex="-1"></a><span class="co"># 讀取 CSV 文件</span></span>
+<span id="cb10-6"><a href="text-mining-of-youtube-comments.html#cb10-6" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/liam/Desktop/NTNU/碩二/1131/文字探勘/youtube_comments_music.csv&quot;</span></span>
+<span id="cb10-7"><a href="text-mining-of-youtube-comments.html#cb10-7" tabindex="-1"></a>comments_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(file_path)</span>
+<span id="cb10-8"><a href="text-mining-of-youtube-comments.html#cb10-8" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="text-mining-of-youtube-comments.html#cb10-9" tabindex="-1"></a><span class="co"># 假設你的評論列名是 &#39;comment&#39;</span></span>
+<span id="cb10-10"><a href="text-mining-of-youtube-comments.html#cb10-10" tabindex="-1"></a>comments <span class="ot">&lt;-</span> comments_df<span class="sc">$</span>comment</span>
+<span id="cb10-11"><a href="text-mining-of-youtube-comments.html#cb10-11" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="text-mining-of-youtube-comments.html#cb10-12" tabindex="-1"></a><span class="co"># 將評論轉換為資料框</span></span>
+<span id="cb10-13"><a href="text-mining-of-youtube-comments.html#cb10-13" tabindex="-1"></a>comments_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">line =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(comments), <span class="at">text =</span> comments)</span>
+<span id="cb10-14"><a href="text-mining-of-youtube-comments.html#cb10-14" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="text-mining-of-youtube-comments.html#cb10-15" tabindex="-1"></a><span class="co"># 清理文本</span></span>
+<span id="cb10-16"><a href="text-mining-of-youtube-comments.html#cb10-16" tabindex="-1"></a>comments_df<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">tolower</span>(comments_df<span class="sc">$</span>text)  <span class="co"># 轉換為小寫</span></span>
+<span id="cb10-17"><a href="text-mining-of-youtube-comments.html#cb10-17" tabindex="-1"></a>comments_df<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;[[:punct:]]&quot;</span>, <span class="st">&quot; &quot;</span>, comments_df<span class="sc">$</span>text)  <span class="co"># 移除標點符號</span></span>
+<span id="cb10-18"><a href="text-mining-of-youtube-comments.html#cb10-18" tabindex="-1"></a>comments_df<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;[[:digit:]]&quot;</span>, <span class="st">&quot; &quot;</span>, comments_df<span class="sc">$</span>text)  <span class="co"># 移除數字</span></span>
+<span id="cb10-19"><a href="text-mining-of-youtube-comments.html#cb10-19" tabindex="-1"></a>comments_df<span class="sc">$</span>text <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot; &quot;</span>, comments_df<span class="sc">$</span>text)  <span class="co"># 移除多餘空白</span></span>
+<span id="cb10-20"><a href="text-mining-of-youtube-comments.html#cb10-20" tabindex="-1"></a><span class="co"># 將評論拆分為單詞</span></span>
+<span id="cb10-21"><a href="text-mining-of-youtube-comments.html#cb10-21" tabindex="-1"></a>wordfile <span class="ot">&lt;-</span> <span class="fu">unnest_tokens</span>(comments_df, word, text, <span class="at">token =</span> <span class="st">&quot;words&quot;</span>)</span>
+<span id="cb10-22"><a href="text-mining-of-youtube-comments.html#cb10-22" tabindex="-1"></a><span class="co"># 加載標準停用詞列表</span></span>
+<span id="cb10-23"><a href="text-mining-of-youtube-comments.html#cb10-23" tabindex="-1"></a>stop_words <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(tidytext<span class="sc">::</span>stop_words)</span>
+<span id="cb10-24"><a href="text-mining-of-youtube-comments.html#cb10-24" tabindex="-1"></a><span class="co"># 移除停用詞</span></span>
+<span id="cb10-25"><a href="text-mining-of-youtube-comments.html#cb10-25" tabindex="-1"></a>wordfile <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(wordfile, stop_words)</span>
+<span id="cb10-26"><a href="text-mining-of-youtube-comments.html#cb10-26" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="text-mining-of-youtube-comments.html#cb10-27" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="text-mining-of-youtube-comments.html#cb10-28" tabindex="-1"></a><span class="co"># 擴展停用詞列表，加入縮寫詞和口語詞</span></span>
+<span id="cb10-29"><a href="text-mining-of-youtube-comments.html#cb10-29" tabindex="-1"></a>custom_stop_words <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">word =</span> <span class="fu">c</span>(<span class="st">&quot;hai&quot;</span>,<span class="st">&quot;bhai&quot;</span>,<span class="st">&quot;don&quot;</span>, </span>
+<span id="cb10-30"><a href="text-mining-of-youtube-comments.html#cb10-30" tabindex="-1"></a>                                         <span class="st">&quot;ve&quot;</span>, <span class="st">&quot;ll&quot;</span>, <span class="st">&quot;na&quot;</span>, <span class="st">&quot;el&quot;</span>, </span>
+<span id="cb10-31"><a href="text-mining-of-youtube-comments.html#cb10-31" tabindex="-1"></a>                                         <span class="st">&quot;la&quot;</span>, <span class="st">&quot;️️️&quot;</span>, <span class="st">&quot;’ll&quot;</span>, <span class="st">&quot;‘till</span></span>
+<span id="cb10-32"><a href="text-mining-of-youtube-comments.html#cb10-32" tabindex="-1"></a><span class="st">                                         &quot;</span>, <span class="st">&quot;’ve&quot;</span>, <span class="st">&quot;‘littl&quot;</span>, <span class="st">&quot;’re&quot;</span>, </span>
+<span id="cb10-33"><a href="text-mining-of-youtube-comments.html#cb10-33" tabindex="-1"></a>                                         <span class="st">&quot;“’m&quot;</span>, <span class="st">&quot;“’re&quot;</span>, <span class="st">&quot;“bon&quot;</span>, </span>
+<span id="cb10-34"><a href="text-mining-of-youtube-comments.html#cb10-34" tabindex="-1"></a>                                         <span class="st">&quot;“copi&quot;</span>, <span class="st">&quot;“don’t&quot;</span>,<span class="st">&quot;you&quot;</span>,</span>
+<span id="cb10-35"><a href="text-mining-of-youtube-comments.html#cb10-35" tabindex="-1"></a>                                         <span class="st">&quot;the&quot;</span>, <span class="st">&quot;and&quot;</span>, <span class="st">&quot;you&quot;</span>, <span class="st">&quot;that&quot;</span>, <span class="st">&quot;for&quot;</span>))</span>
+<span id="cb10-36"><a href="text-mining-of-youtube-comments.html#cb10-36" tabindex="-1"></a><span class="co"># 移除自定義的停用詞</span></span>
+<span id="cb10-37"><a href="text-mining-of-youtube-comments.html#cb10-37" tabindex="-1"></a>wordfile <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(wordfile, custom_stop_words)</span>
+<span id="cb10-38"><a href="text-mining-of-youtube-comments.html#cb10-38" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="text-mining-of-youtube-comments.html#cb10-39" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="text-mining-of-youtube-comments.html#cb10-40" tabindex="-1"></a><span class="do">##進階處理</span></span>
+<span id="cb10-41"><a href="text-mining-of-youtube-comments.html#cb10-41" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb10-42"><a href="text-mining-of-youtube-comments.html#cb10-42" tabindex="-1"></a><span class="fu">library</span>(SnowballC)</span>
+<span id="cb10-43"><a href="text-mining-of-youtube-comments.html#cb10-43" tabindex="-1"></a><span class="co"># 使用詞幹提取來處理複數詞(怪怪的)</span></span>
+<span id="cb10-44"><a href="text-mining-of-youtube-comments.html#cb10-44" tabindex="-1"></a><span class="co">#wordfile$word &lt;- wordStem(wordfile$word, language = &quot;en&quot;)</span></span>
+<span id="cb10-45"><a href="text-mining-of-youtube-comments.html#cb10-45" tabindex="-1"></a></span>
+<span id="cb10-46"><a href="text-mining-of-youtube-comments.html#cb10-46" tabindex="-1"></a><span class="co"># 加載 textstem 套件（better）</span></span>
+<span id="cb10-47"><a href="text-mining-of-youtube-comments.html#cb10-47" tabindex="-1"></a><span class="fu">library</span>(textstem)</span>
+<span id="cb10-48"><a href="text-mining-of-youtube-comments.html#cb10-48" tabindex="-1"></a><span class="co"># 使用 lemmatize_words 進行詞形還原</span></span>
+<span id="cb10-49"><a href="text-mining-of-youtube-comments.html#cb10-49" tabindex="-1"></a>wordfile<span class="sc">$</span>word <span class="ot">&lt;-</span> <span class="fu">lemmatize_words</span>(wordfile<span class="sc">$</span>word)</span>
+<span id="cb10-50"><a href="text-mining-of-youtube-comments.html#cb10-50" tabindex="-1"></a></span>
+<span id="cb10-51"><a href="text-mining-of-youtube-comments.html#cb10-51" tabindex="-1"></a></span>
+<span id="cb10-52"><a href="text-mining-of-youtube-comments.html#cb10-52" tabindex="-1"></a><span class="co"># 重新計算詞頻</span></span>
+<span id="cb10-53"><a href="text-mining-of-youtube-comments.html#cb10-53" tabindex="-1"></a>wordfreq <span class="ot">&lt;-</span> <span class="fu">count</span>(wordfile, word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-54"><a href="text-mining-of-youtube-comments.html#cb10-54" tabindex="-1"></a></span>
+<span id="cb10-55"><a href="text-mining-of-youtube-comments.html#cb10-55" tabindex="-1"></a><span class="co"># 查看前 20 個最常見的詞</span></span>
+<span id="cb10-56"><a href="text-mining-of-youtube-comments.html#cb10-56" tabindex="-1"></a>wordfreqdf20 <span class="ot">&lt;-</span> wordfreq[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span>
+<span id="cb10-57"><a href="text-mining-of-youtube-comments.html#cb10-57" tabindex="-1"></a><span class="co"># 打印結果</span></span>
+<span id="cb10-58"><a href="text-mining-of-youtube-comments.html#cb10-58" tabindex="-1"></a>wordfreqdf20</span>
+<span id="cb10-59"><a href="text-mining-of-youtube-comments.html#cb10-59" tabindex="-1"></a></span>
+<span id="cb10-60"><a href="text-mining-of-youtube-comments.html#cb10-60" tabindex="-1"></a></span>
+<span id="cb10-61"><a href="text-mining-of-youtube-comments.html#cb10-61" tabindex="-1"></a><span class="co"># 重新排列詞語順序以便進行可視化</span></span>
+<span id="cb10-62"><a href="text-mining-of-youtube-comments.html#cb10-62" tabindex="-1"></a>wordfreqdf20<span class="sc">$</span>word <span class="ot">&lt;-</span> <span class="fu">fct_reorder</span>(wordfreqdf20<span class="sc">$</span>word, wordfreqdf20<span class="sc">$</span>n, <span class="at">.desc =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="case-1-詞頻文字雲" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Case 1 詞頻&amp;文字雲<a href="text-mining-of-youtube-comments.html#case-1-詞頻文字雲" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="text-mining-of-youtube-comments.html#cb11-1" tabindex="-1"></a><span class="co"># 繪製詞頻圖</span></span>
+<span id="cb11-2"><a href="text-mining-of-youtube-comments.html#cb11-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> wordfreqdf20, <span class="fu">aes</span>(<span class="at">x =</span> word, <span class="at">y =</span> n, <span class="at">fill =</span> word)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="text-mining-of-youtube-comments.html#cb11-3" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="text-mining-of-youtube-comments.html#cb11-4" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb11-5"><a href="text-mining-of-youtube-comments.html#cb11-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;YouTube Comments Freq&quot;</span>, <span class="at">x =</span> <span class="st">&quot;word&quot;</span>, <span class="at">y =</span> <span class="st">&quot;freq&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="text-mining-of-youtube-comments.html#cb11-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-7"><a href="text-mining-of-youtube-comments.html#cb11-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb11-8"><a href="text-mining-of-youtube-comments.html#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="text-mining-of-youtube-comments.html#cb11-9" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb11-10"><a href="text-mining-of-youtube-comments.html#cb11-10" tabindex="-1"></a><span class="co"># 構建詞與詞頻數據，假設你的詞頻表已經計算好了</span></span>
+<span id="cb11-11"><a href="text-mining-of-youtube-comments.html#cb11-11" tabindex="-1"></a>wordfreq <span class="ot">&lt;-</span> <span class="fu">count</span>(wordfile, word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-12"><a href="text-mining-of-youtube-comments.html#cb11-12" tabindex="-1"></a><span class="co"># 繪製文字雲</span></span>
+<span id="cb11-13"><a href="text-mining-of-youtube-comments.html#cb11-13" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="at">words =</span> wordfreq<span class="sc">$</span>word, </span>
+<span id="cb11-14"><a href="text-mining-of-youtube-comments.html#cb11-14" tabindex="-1"></a>          <span class="at">freq =</span> wordfreq<span class="sc">$</span>n, </span>
+<span id="cb11-15"><a href="text-mining-of-youtube-comments.html#cb11-15" tabindex="-1"></a>          <span class="at">min.freq =</span> <span class="dv">4</span>,  <span class="co"># 設定最低出現頻率</span></span>
+<span id="cb11-16"><a href="text-mining-of-youtube-comments.html#cb11-16" tabindex="-1"></a>          <span class="at">random.order =</span> <span class="cn">FALSE</span>,  <span class="co"># 詞語按照頻率大小排序</span></span>
+<span id="cb11-17"><a href="text-mining-of-youtube-comments.html#cb11-17" tabindex="-1"></a>          <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Dark2&quot;</span>))  <span class="co"># 設定顏色</span></span>
+<span id="cb11-18"><a href="text-mining-of-youtube-comments.html#cb11-18" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="text-mining-of-youtube-comments.html#cb11-19" tabindex="-1"></a><span class="fu">library</span>(wordcloud2)</span>
+<span id="cb11-20"><a href="text-mining-of-youtube-comments.html#cb11-20" tabindex="-1"></a><span class="co"># 使用 wordcloud2 繪製互動式文字雲</span></span>
+<span id="cb11-21"><a href="text-mining-of-youtube-comments.html#cb11-21" tabindex="-1"></a><span class="fu">wordcloud2</span>(<span class="at">data =</span> wordfreq, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">&#39;random-light&#39;</span>, <span class="at">backgroundColor =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+</div>
+<div id="case-2-情感分析" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Case 2 情感分析<a href="text-mining-of-youtube-comments.html#case-2-情感分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="text-mining-of-youtube-comments.html#cb12-1" tabindex="-1"></a><span class="co"># 加載必要的套件</span></span>
+<span id="cb12-2"><a href="text-mining-of-youtube-comments.html#cb12-2" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb12-3"><a href="text-mining-of-youtube-comments.html#cb12-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-4"><a href="text-mining-of-youtube-comments.html#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="text-mining-of-youtube-comments.html#cb12-5" tabindex="-1"></a><span class="co"># 使用 &quot;nrc&quot; 情感詞典進行情感分析</span></span>
+<span id="cb12-6"><a href="text-mining-of-youtube-comments.html#cb12-6" tabindex="-1"></a>wordfile_sentiments <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(wordfile, <span class="fu">get_sentiments</span>(<span class="st">&quot;nrc&quot;</span>), <span class="at">by =</span> <span class="st">&quot;word&quot;</span>)</span>
+<span id="cb12-7"><a href="text-mining-of-youtube-comments.html#cb12-7" tabindex="-1"></a><span class="co"># 允許多對多關係</span></span>
+<span id="cb12-8"><a href="text-mining-of-youtube-comments.html#cb12-8" tabindex="-1"></a>wordfile_sentiments <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(wordfile, <span class="fu">get_sentiments</span>(<span class="st">&quot;nrc&quot;</span>), <span class="at">by =</span> <span class="st">&quot;word&quot;</span>, <span class="at">relationship =</span> <span class="st">&quot;many-to-many&quot;</span>)</span>
+<span id="cb12-9"><a href="text-mining-of-youtube-comments.html#cb12-9" tabindex="-1"></a><span class="co"># 統計各種情感的出現頻率</span></span>
+<span id="cb12-10"><a href="text-mining-of-youtube-comments.html#cb12-10" tabindex="-1"></a>sentiment_counts <span class="ot">&lt;-</span> wordfile_sentiments <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="text-mining-of-youtube-comments.html#cb12-11" tabindex="-1"></a>  <span class="fu">count</span>(sentiment, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-12"><a href="text-mining-of-youtube-comments.html#cb12-12" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="text-mining-of-youtube-comments.html#cb12-13" tabindex="-1"></a><span class="co"># 繪製情感條形圖</span></span>
+<span id="cb12-14"><a href="text-mining-of-youtube-comments.html#cb12-14" tabindex="-1"></a><span class="fu">ggplot</span>(sentiment_counts, <span class="fu">aes</span>(<span class="at">x =</span> sentiment, <span class="at">y =</span> n, <span class="at">fill =</span> sentiment)) <span class="sc">+</span></span>
+<span id="cb12-15"><a href="text-mining-of-youtube-comments.html#cb12-15" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-16"><a href="text-mining-of-youtube-comments.html#cb12-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-17"><a href="text-mining-of-youtube-comments.html#cb12-17" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;YouTube Comments Sentiment Analysis&quot;</span>)</span></code></pre></div>
+</div>
+<div id="case-3-主題模型" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Case 3 主題模型<a href="text-mining-of-youtube-comments.html#case-3-主題模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="text-mining-of-youtube-comments.html#cb13-1" tabindex="-1"></a><span class="co"># 加載 topicmodels 套件進行主題模型分析</span></span>
+<span id="cb13-2"><a href="text-mining-of-youtube-comments.html#cb13-2" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
+<span id="cb13-3"><a href="text-mining-of-youtube-comments.html#cb13-3" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb13-4"><a href="text-mining-of-youtube-comments.html#cb13-4" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="text-mining-of-youtube-comments.html#cb13-5" tabindex="-1"></a><span class="co"># 構建文檔-詞矩陣 (DTM)</span></span>
+<span id="cb13-6"><a href="text-mining-of-youtube-comments.html#cb13-6" tabindex="-1"></a>dtm_clean <span class="ot">&lt;-</span> <span class="fu">DocumentTermMatrix</span>(<span class="fu">Corpus</span>(<span class="fu">VectorSource</span>(wordfile<span class="sc">$</span>word)))</span>
+<span id="cb13-7"><a href="text-mining-of-youtube-comments.html#cb13-7" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="text-mining-of-youtube-comments.html#cb13-8" tabindex="-1"></a><span class="co"># 檢查 DTM 中的空行數量</span></span>
+<span id="cb13-9"><a href="text-mining-of-youtube-comments.html#cb13-9" tabindex="-1"></a>row_sums <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(<span class="fu">as.matrix</span>(dtm_clean))</span>
+<span id="cb13-10"><a href="text-mining-of-youtube-comments.html#cb13-10" tabindex="-1"></a>dtm_clean <span class="ot">&lt;-</span> dtm_clean[row_sums <span class="sc">&gt;</span> <span class="dv">0</span>, ]  <span class="co"># 去除沒有詞語的行</span></span>
+<span id="cb13-11"><a href="text-mining-of-youtube-comments.html#cb13-11" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="text-mining-of-youtube-comments.html#cb13-12" tabindex="-1"></a><span class="co"># 設置主題數量 (例如 5 個主題)</span></span>
+<span id="cb13-13"><a href="text-mining-of-youtube-comments.html#cb13-13" tabindex="-1"></a>lda_model <span class="ot">&lt;-</span> <span class="fu">LDA</span>(dtm_clean, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">1234</span>))</span>
+<span id="cb13-14"><a href="text-mining-of-youtube-comments.html#cb13-14" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="text-mining-of-youtube-comments.html#cb13-15" tabindex="-1"></a><span class="co"># 顯示每個主題中的關鍵詞</span></span>
+<span id="cb13-16"><a href="text-mining-of-youtube-comments.html#cb13-16" tabindex="-1"></a>topics <span class="ot">&lt;-</span> <span class="fu">terms</span>(lda_model, <span class="dv">10</span>)</span>
+<span id="cb13-17"><a href="text-mining-of-youtube-comments.html#cb13-17" tabindex="-1"></a><span class="fu">print</span>(topics)</span>
+<span id="cb13-18"><a href="text-mining-of-youtube-comments.html#cb13-18" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="text-mining-of-youtube-comments.html#cb13-19" tabindex="-1"></a><span class="co"># 可視化每個主題中的前幾個關鍵詞</span></span>
+<span id="cb13-20"><a href="text-mining-of-youtube-comments.html#cb13-20" tabindex="-1"></a>topic_terms <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(topics)</span>
+<span id="cb13-21"><a href="text-mining-of-youtube-comments.html#cb13-21" tabindex="-1"></a><span class="fu">print</span>(topic_terms)</span>
+<span id="cb13-22"><a href="text-mining-of-youtube-comments.html#cb13-22" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="text-mining-of-youtube-comments.html#cb13-23" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="text-mining-of-youtube-comments.html#cb13-24" tabindex="-1"></a><span class="co"># 提取每個評論的主題分佈</span></span>
+<span id="cb13-25"><a href="text-mining-of-youtube-comments.html#cb13-25" tabindex="-1"></a>topic_distribution <span class="ot">&lt;-</span> <span class="fu">tidy</span>(lda_model, <span class="at">matrix =</span> <span class="st">&quot;gamma&quot;</span>)</span>
+<span id="cb13-26"><a href="text-mining-of-youtube-comments.html#cb13-26" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="text-mining-of-youtube-comments.html#cb13-27" tabindex="-1"></a><span class="co"># 可視化評論中的主題分佈</span></span>
+<span id="cb13-28"><a href="text-mining-of-youtube-comments.html#cb13-28" tabindex="-1"></a><span class="fu">ggplot</span>(topic_distribution, <span class="fu">aes</span>(<span class="at">x =</span> topic, <span class="at">y =</span> gamma, <span class="at">fill =</span> <span class="fu">as.factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb13-29"><a href="text-mining-of-youtube-comments.html#cb13-29" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-30"><a href="text-mining-of-youtube-comments.html#cb13-30" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-31"><a href="text-mining-of-youtube-comments.html#cb13-31" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Topic Distribution in Comments&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Topic&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Proportion&quot;</span>)</span></code></pre></div>
+</div>
+<div id="case-4-詞性標注" class="section level3 hasAnchor" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> Case 4 詞性標注<a href="text-mining-of-youtube-comments.html#case-4-詞性標注" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="text-mining-of-youtube-comments.html#cb14-1" tabindex="-1"></a><span class="co"># 加載 udpipe 套件</span></span>
+<span id="cb14-2"><a href="text-mining-of-youtube-comments.html#cb14-2" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
+<span id="cb14-3"><a href="text-mining-of-youtube-comments.html#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="text-mining-of-youtube-comments.html#cb14-4" tabindex="-1"></a><span class="co"># 下載預訓練的英文模型</span></span>
+<span id="cb14-5"><a href="text-mining-of-youtube-comments.html#cb14-5" tabindex="-1"></a>ud_model <span class="ot">&lt;-</span> <span class="fu">udpipe_download_model</span>(<span class="at">language =</span> <span class="st">&quot;english&quot;</span>)</span>
+<span id="cb14-6"><a href="text-mining-of-youtube-comments.html#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="text-mining-of-youtube-comments.html#cb14-7" tabindex="-1"></a><span class="co"># 加載模型</span></span>
+<span id="cb14-8"><a href="text-mining-of-youtube-comments.html#cb14-8" tabindex="-1"></a>ud_model <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(ud_model<span class="sc">$</span>file_model)</span>
+<span id="cb14-9"><a href="text-mining-of-youtube-comments.html#cb14-9" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="text-mining-of-youtube-comments.html#cb14-10" tabindex="-1"></a><span class="co"># 使用模型進行詞性標註</span></span>
+<span id="cb14-11"><a href="text-mining-of-youtube-comments.html#cb14-11" tabindex="-1"></a>pos_result <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(ud_model, <span class="at">x =</span> comments_df<span class="sc">$</span>text)</span>
+<span id="cb14-12"><a href="text-mining-of-youtube-comments.html#cb14-12" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="text-mining-of-youtube-comments.html#cb14-13" tabindex="-1"></a><span class="co"># 轉換為數據框格式</span></span>
+<span id="cb14-14"><a href="text-mining-of-youtube-comments.html#cb14-14" tabindex="-1"></a>pos_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(pos_result)</span>
+<span id="cb14-15"><a href="text-mining-of-youtube-comments.html#cb14-15" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="text-mining-of-youtube-comments.html#cb14-16" tabindex="-1"></a><span class="co"># 顯示詞性標註的結果</span></span>
+<span id="cb14-17"><a href="text-mining-of-youtube-comments.html#cb14-17" tabindex="-1"></a><span class="fu">head</span>(pos_df, <span class="dv">10</span>)</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="next-step.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
